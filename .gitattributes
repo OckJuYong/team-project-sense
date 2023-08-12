@@ -1,0 +1,7 @@
+# Set the default behavior for line endings
+* text=auto
+
+# Explicitly declare files that will always have CRLF line endings on checkout.
+*.html text eol=crlf
+*.css text eol=crlf
+*.js text eol=crlf
