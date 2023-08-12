@@ -1,0 +1,31 @@
+.nav {
+    height: 13vh;
+    width: 100%;
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: space-around; /* 가로 정렬 */
+}
+
+.man_btn, .home_btn, .write_btn {
+    text-decoration: none;
+    padding: 5vh 0;
+    font-size: 4vw;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #020000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 30%; /* 버튼의 너비를 조절합니다. */
+    text-align: center;
+}
+
+.man_btn:hover, .home_btn:hover, .write_btn:hover {
+    background-color: #898788;
+    border-color: #0056b3;
+}
+
+.man_btn:active, .home_btn:active, .write_btn:active {
+    background-color: #003a80;
+    border-color: #003a80;
+}
