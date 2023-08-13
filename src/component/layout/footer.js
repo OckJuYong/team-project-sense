@@ -5,13 +5,21 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './footer.css';
 
 const Footer = ({ currentWordIndex, setCurrentWordIndex, dataLength, setIsMeaningShown }) => {
+   
     const goToPreviousWord = () => {
-        setCurrentWordIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+        setCurrentWordIndex(prevIndex => (prevIndex > 1 ? prevIndex - 1 : prevIndex));
+        setIsMeaningShown(false);
+        if (currentWordIndex < currentWordIndex.length) {
+            setCurrentWordIndex(prevIndex => currentWordIndex.length)
+        }
     };
 
     const goToNextWord = () => {
-        setCurrentWordIndex(prevIndex => (prevIndex < dataLength - 1 ? prevIndex + 1 : prevIndex));
+        setCurrentWordIndex(prevIndex => prevIndex + 1);
         setIsMeaningShown(false);
+        if (currentWordIndex > currentWordIndex.length) {
+            setCurrentWordIndex(prevIndex => prevIndex = 1)
+        }
     };
 
     return (

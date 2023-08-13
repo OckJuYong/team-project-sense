@@ -1,19 +1,29 @@
 import './write.css';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Write = () => {
     const [word, setWord] = useState('');
     const [meaning, setMeaning] = useState('');
     const [data, setData] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (word && meaning) {
-            const newData = { word, meaning };
-            setData((prevData) => [...prevData, newData]);
-            setWord('');
-            setMeaning('');
+            try {
+                // 데이터를 백엔드에 저장
+                const response = await axios.post('http://192.168.0.15:8000/posts/create/', {
+                    word,
+                    meaning
+                });
+                // 저장 후 초기화
+                setData((prevData) => [...prevData, response.data]);
+                setWord('');
+                setMeaning('');
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
         }
     };
 
@@ -32,26 +42,28 @@ const Write = () => {
         <div className="form-group">
             <form onSubmit={handleSubmit}>
                 <div className='word_form'>
-                    <input className="word_write_form" 
-                        type="text" 
-                        value={word} 
-                        onChange={(e) => setWord(e.target.value)} 
+                    <input
+                        className="word_write_form"
+                        type="text"
+                        value={word}
+                        onChange={(e) => setWord(e.target.value)}
                         placeholder='단어 입력창'
                     />
                     <span className="word_underline"></span>
                 </div>
                 <div className='mean_form'>
-                    <input className="mean_write_form" 
-                        type="text" 
-                        value={meaning} 
-                        onChange={(e) => setMeaning(e.target.value)} 
+                    <input
+                        className="mean_write_form"
+                        type="text"
+                        value={meaning}
+                        onChange={(e) => setMeaning(e.target.value)}
                         placeholder='뜻 입력창'
                     />
                     <span className="mean_underline"></span>
                 </div>
                 <div className="submit_btn">
                     <button className="mz_plus_write_btn" type="submit">확인</button>
-                    <button className="mz_plus_cansle_btn" type="submit">취소</button>
+                    <button className="mz_plus_cansle_btn" type="button" onClick={() => { setWord(''); setMeaning(''); }}>취소</button>
                 </div>
                 
             </form>
