@@ -1,35 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "./warning.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const Warning = () => {
-    const [count, setCount] = useState(0);
-
+const Warning = ({
+    currentWord,
+    setCurrentWord,
+    setIsLoading
+}) => {
     const warningClick = async () => {
-        setCount(prevInt => prevInt + 1)
-        const updatedCount = count;
-        console.log(count)
+        const response = await axios.delete(`http://127.0.0.1:8000/posts/report/${currentWord.id}`);  // 단어 신고하기
+        if (response.status === 201) {
+            toast.success("단어가 신고되었습니다!");
+        } else if (response.status === 204) {
+            toast.success("단어가 삭제되었습니다!");
+            
+            if (currentWord.id === currentWord.next_id) {
+                // DB에 단어가 1개인 경우에 단어를 삭제한 경우: 단어 보는 화면(layout)에 'Not Found...' 표시
+                setCurrentWord(undefined);
+            } else {
+                // DB에 단어가 2개 이상인 경우에 단어를 상제한 경우: 단어 보는 화면(layout)에 신고한 단어 다음 단어 표시
+                setIsLoading(true);
 
+                const response = await axios.get(`http://127.0.0.1:8000/posts/${currentWord.next_id}`);
+                setCurrentWord(response.data);
 
-        if (updatedCount >= 3) {
-
-            try {
-                const response = await axios.delete(`http://127.0.0.1:8000/posts/report/${global.warning_word}`);
-                if (response.status === 204) {
-                    toast.success("단어가 삭제되었습니다!");
-                } else if (response.status === 200) {
-                    toast.warning("이미 신고한 단어입니다.");
-                } else if (response.status === 404) {
-                    toast.error("존재하지 않는 단어를 신고하였습니다.");
-                } else {
-                    toast.error("단어 삭제 실패");
-                }
-                
-            } catch (error) {
-                console.error('Error reporting word:', error);
+                setIsLoading(false);
             }
+        } else if (response.status === 200) {
+            toast.warning("이미 신고한 단어입니다.");
+        } else if (response.status === 404) {
+            toast.error("존재하지 않는 단어를 신고하였습니다.");
+        } else {
+            toast.error("단어 삭제 실패");
         }
     };
 

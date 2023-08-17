@@ -45,6 +45,8 @@ main {
     height: 70%; /* 메인 컨테이너 높이에 맞게 설정 */
 }
 /* 뜻 폰트 사이즈 변환 */
+
+
 .small {
     font-size: 15vh;
 }
@@ -56,3 +58,12 @@ main {
 .large {
     font-size: 5vh;
 }
+
+.big {
+    font-size: 4vh;
+}
+
+.API_part.word {
+    font-size: 20vw; /* 원하는 크기 설정 */
+}
+

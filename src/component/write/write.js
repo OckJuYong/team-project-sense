@@ -1,11 +1,15 @@
 import './write.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const Write = () => {
+const Write = ({ setCurrentWord }) => {
     const [word, setWord] = useState('');
     const [meaning, setMeaning] = useState('');
     const [data, setData] = useState([]);
+
+    const navigation = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,16 +17,15 @@ const Write = () => {
         if (word && meaning) {
             try {
                 // 데이터를 백엔드에 저장
-                const response = await axios.post('http://192.168.0.15:8000/posts/create/', {
+                const response = await axios.post('http://127.0.0.1:8000/posts/create/', {
                     word,
                     meaning
                 });
-                // 저장 후 초기화
-                setData((prevData) => [...prevData, response.data]);
-                setWord('');
-                setMeaning('');
+                setCurrentWord(response.data);
             } catch (error) {
-                console.error('Error saving data:', error);
+                toast.warning("이미 존재하는 단어입니다.");
+            } finally {
+                navigation("/");  // 단어 저장 후 단어 보는 화면(layout)으로 넘어가기(생성한 단어)
             }
         }
     };
@@ -37,7 +40,7 @@ const Write = () => {
         a.click();
         URL.revokeObjectURL(url);
     };
-    
+
     return (
         <div className="form-group">
             <form onSubmit={handleSubmit}>
@@ -63,7 +66,7 @@ const Write = () => {
                 </div>
                 <div className="submit_btn">
                     <button className="mz_plus_write_btn" type="submit">확인</button>
-                    <button className="mz_plus_cansle_btn" type="button" onClick={() => { setWord(''); setMeaning(''); }}>취소</button>
+                    <button className="mz_plus_cansle_btn" type="button" onClick={() => {navigation("/");}}>취소</button>
                 </div>
                 
             </form>
