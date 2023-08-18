@@ -8,8 +8,12 @@ import Nav from './nav';
 export const Layout = ({
     currentWord,
     setCurrentWord,
+    currentMarkedWord,
+    setCurrentMarkedWord,
     isLoading,
-    setUser
+    setIsLoading,
+    setUser,
+    user
 }) => {
     const [isMeaningShown, setIsMeaningShown] = useState(null);
 
@@ -18,7 +22,7 @@ export const Layout = ({
         async function fetchData() {
             try {
                 // 사용자 정보 가져오기 - 추가
-                const userResponse = await axios.get('http://127.0.0.1:8000/members/information/', { withCredentials: true });
+                const userResponse = await axios.get(process.env.REACT_APP_USERNAME_API, { withCredentials: true });
                 setUser(userResponse.data);
             } catch (e) {}
         }
@@ -49,7 +53,10 @@ export const Layout = ({
 
     return (
         <div className="layout">
-            <Header currentWord={currentWord}/>
+            <Header 
+                currentWord={currentWord}
+                user={user}
+            />
             <br />
             <main>
                 <div className="main">
@@ -64,9 +71,16 @@ export const Layout = ({
             <Footer
                 currentWord={currentWord}
                 setCurrentWord={setCurrentWord}
+                user={user}
             />
             <br />
-            <Nav />
+            <Nav 
+                currentWord={currentWord}
+                currentMarkedWord={currentMarkedWord}
+                setCurrentMarkedWord={setCurrentMarkedWord}
+                setIsLoading={setIsLoading}
+                user={user}
+            />
         </div>
     );
 }

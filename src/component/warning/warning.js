@@ -10,7 +10,7 @@ const Warning = ({
     setIsLoading
 }) => {
     const warningClick = async () => {
-        const response = await axios.delete(`http://127.0.0.1:8000/posts/report/${currentWord.id}`);  // 단어 신고하기
+        const response = await axios.delete(`${process.env.REACT_APP_REPORT_POST_API}${currentWord.id}`);  // 단어 신고하기
         if (response.status === 201) {
             toast.success("단어가 신고되었습니다!");
         } else if (response.status === 204) {
@@ -23,7 +23,7 @@ const Warning = ({
                 // DB에 단어가 2개 이상인 경우에 단어를 상제한 경우: 단어 보는 화면(layout)에 신고한 단어 다음 단어 표시
                 setIsLoading(true);
 
-                const response = await axios.get(`http://127.0.0.1:8000/posts/${currentWord.next_id}`);
+                const response = await axios.get(`${process.env.REACT_APP_POST_API}${currentWord.next_id}`);
                 setCurrentWord(response.data);
 
                 setIsLoading(false);

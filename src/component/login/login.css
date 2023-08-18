@@ -18,6 +18,9 @@ h2 {
     align-items: center;
     background-color: #3f3f3f;
 }
+.Logo_name_Link {
+    text-decoration: none;
+}
   
 .Login_home h1 {
     margin-bottom: 30px; /* 로고 아래 여백 */

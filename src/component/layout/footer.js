@@ -10,13 +10,13 @@ const Footer = ({
 }) => {
     // 이전 단어 가지고 오기
     const goToPreviousWord = async () => {
-        const response = await axios.get(`http://127.0.0.1:8000/posts/${currentWord.prev_id}/`);
+        const response = await axios.get(`${process.env.REACT_APP_POST_API}${currentWord.prev_id}/`);
         setCurrentWord(response.data);
     };
 
     // 다음 단어 가지고 오기
     const goToNextWord = async () => {
-        const response = await axios.get(`http://127.0.0.1:8000/posts/${currentWord.next_id}/`);
+        const response = await axios.get(`${process.env.REACT_APP_POST_API}${currentWord.next_id}/`);
         setCurrentWord(response.data);
     };
 
