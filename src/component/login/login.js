@@ -13,11 +13,11 @@ const Login =()=>{
     return(
         <div className="Login_home">
             <h2>MZ 단어사전!</h2>
-            <h1 className="Logo_name">SENSE</h1>
+            <h1 className="Logo_name">-SENSE-</h1>
             <div className="kakao_custom_login_container">
-            <Link to={kakaoLoginPath}>로그인</Link>
+            <Link className="login_link" to={kakaoLoginPath}>로그인</Link>
             <div />
-            <Link to={kakaoLogoutPath}>로그아웃</Link>
+            <Link className="logout_link" to={kakaoLogoutPath}>로그아웃</Link>
             </div>
         </div>
     )

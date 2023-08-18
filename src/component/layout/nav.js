@@ -1,13 +1,18 @@
 import './nav.css'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressCard, faBookmark } from '@fortawesome/free-regular-svg-icons';
 
 const Nav = () => {
     return(
         <nav>
             <div className="nav">
-                <button className="home_btn">봤던 단어</button>
-                <Link className="man_btn" to="/login">회원정보 수정</Link>
-                <button className="write_btn">회원 레벨</button>
+                <Link className="home_btn" to="/bookmark">
+                    <FontAwesomeIcon icon={faBookmark} size="2x"/>
+                </Link>
+                <Link className="man_btn" to="/login">
+                    <FontAwesomeIcon icon={faAddressCard} size="2x"/> {/* 올바른 아이콘 식별자 사용 */}
+                </Link>
             </div>
         </nav>
     )

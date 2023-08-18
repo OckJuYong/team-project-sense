@@ -4,25 +4,58 @@
     display: flex;
     align-items: center; /* 세로 가운데 정렬 */
     justify-content: space-around; /* 가로 정렬 */
+    border-top: 2px dotted rgb(156, 164, 247);
 }
-
-.man_btn, .home_btn, .write_btn {
+.home_btn {
     text-decoration: none;
-    padding: 5vh 0;
+    /* padding: 5vh 0; */
     font-size: 4vw;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #020000;
+    /* border: 2px solid #000000; */
+    /* border-radius: 10px; */
+    /* background-color: #ffffff; */
+    background-color: #3f3f3f;
+    border: 1px solid #3f3f3f;
+    color: rgb(156, 164, 247);
     cursor: pointer;
     transition: all 0.3s ease;
     width: 30%; /* 버튼의 너비를 조절합니다. */
     text-align: center;
 }
 
+.man_btn {
+    text-decoration: none;
+    /* padding: 5vh 0; */
+    font-size: 4vw;
+    /* border: 2px solid #000000; */
+    /* border-radius: 10px; */
+    /* background-color: #ffffff; */
+    color: rgb(156, 164, 247);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 30%; /* 버튼의 너비를 조절합니다. */
+    text-align: center;
+    
+}
+.write_btn {
+    text-decoration: none;
+    /* padding: 5vh 0; */
+    font-size: 4vw;
+    /* border: 2px solid #000000; */
+    /* border-radius: 10px; */
+    /* background-color: #ffffff; */
+    background-color: #3f3f3f;
+    border: 1px solid #3f3f3f;
+    color: rgb(156, 164, 247);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 35%; /* 버튼의 너비를 조절합니다. */
+    text-align: center;
+}
+
 .man_btn:hover, .home_btn:hover, .write_btn:hover {
-    background-color: #898788;
-    border-color: #0056b3;
+    /* background-color: #898788; */
+    color: #ffffff;
+    transform: scale(1.2);
 }
 
 .man_btn:active, .home_btn:active, .write_btn:active {

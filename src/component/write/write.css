@@ -1,7 +1,10 @@
+
+
 .form-group {
-    height: 55vh;
-    margin-top: 20vh;
-    padding: 10px; 
+    height: 100vh;
+    /* margin-top: 20vh; */
+    padding-top: 20vh; 
+    background-color: #3f3f3f;
   }
   
 .word_form, .mean_form {
@@ -21,12 +24,14 @@
     border-right: none;
     border-left: none;
     margin-left: 14vw;
+    background-color: #3f3f3f;
 }
 .mean_write_form {
     padding: 100px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
+    background-color: #3f3f3f;
 }
   
 .submit_btn {
@@ -39,10 +44,11 @@
     font-size: 10vw; /* 버튼 내부 텍스트의 크기를 조정합니다. */
     height: 15vh;
     width: 40vw;
-    border: 2px solid #000000; /* 버튼 테두리 스타일을 설정합니다. */
-    border-radius: 100%;  /* 버튼 테두리를 둥글게 만듭니다. */
-    background-color: #007bff; /* 버튼 배경색을 설정합니다. */
-    color: #fff; /* 버튼 텍스트 색상을 설정합니다. */
+    /* border: 2px solid #000000; 버튼 테두리 스타일을 설정합니다. */
+    /* border-radius: 100%;  버튼 테두리를 둥글게 만듭니다. */
+    background-color: #3f3f3f; /* 버튼 배경색을 설정합니다. */
+    border : none;
+    color: rgb(156, 164, 247); /* 버튼 텍스트 색상을 설정합니다. */
     cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 모양을 변경합니다. */
     transition: all 0.3s ease;
   }
@@ -51,10 +57,14 @@
     font-size: 10vw; /* 버튼 내부 텍스트의 크기를 조정합니다. */
     height: 15vh;
     width: 40vw;
-    border: 2px solid #000000; /* 버튼 테두리 스타일을 설정합니다. */
-    border-radius: 100%;  /* 버튼 테두리를 둥글게 만듭니다. */
-    background-color: #007bff; /* 버튼 배경색을 설정합니다. */
-    color: #fff; /* 버튼 텍스트 색상을 설정합니다. */
+    /* border: 2px solid #000000; 버튼 테두리 스타일을 설정합니다. */
+    /* border-radius: 100%;  버튼 테두리를 둥글게 만듭니다. */
+    /* background-color: #007bff; 버튼 배경색을 설정합니다. */
+
+    background-color: #3f3f3f; /* 버튼 배경색을 설정합니다. */
+    border : none;
+
+    color: rgb(156, 164, 247); /* 버튼 텍스트 색상을 설정합니다. */
     cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 모양을 변경합니다. */
     transition: all 0.3s ease;
 }

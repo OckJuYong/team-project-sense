@@ -1,13 +1,14 @@
-import './write.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // 레귤러 스타일 아이콘을 사용하려면 해당 패키지에서 불러옵니다.
+import './write.css';
 
 const Write = ({ setCurrentWord }) => {
     const [word, setWord] = useState('');
     const [meaning, setMeaning] = useState('');
-    const [data, setData] = useState([]);
 
     const navigation = useNavigate();
 
@@ -28,17 +29,6 @@ const Write = ({ setCurrentWord }) => {
                 navigation("/");  // 단어 저장 후 단어 보는 화면(layout)으로 넘어가기(생성한 단어)
             }
         }
-    };
-
-    const handleSave = () => {
-        const jsonData = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonData], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'data.json';
-        a.click();
-        URL.revokeObjectURL(url);
     };
 
     return (
@@ -65,14 +55,15 @@ const Write = ({ setCurrentWord }) => {
                     <span className="mean_underline"></span>
                 </div>
                 <div className="submit_btn">
-                    <button className="mz_plus_write_btn" type="submit">확인</button>
-                    <button className="mz_plus_cansle_btn" type="button" onClick={() => {navigation("/");}}>취소</button>
+                    <button className="mz_plus_write_btn" type="submit">
+                        <FontAwesomeIcon icon={faCheck} /> {/* 올바른 아이콘 식별자 사용 */}
+                    </button>
+                    <button className="mz_plus_cansle_btn" type="button" onClick={() => {navigation("/");}}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
                 </div>
                 
             </form>
-            <div className="button-group">
-                <button onClick={handleSave}>데이터 저장</button>
-            </div>
             
         </div>
     );

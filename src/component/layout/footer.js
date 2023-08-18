@@ -22,9 +22,9 @@ const Footer = ({
 
     return (
         <footer className="footer">
-            <div className="contents">
-                <button className='left_btn' onClick={goToPreviousWord} disabled={!currentWord}><FontAwesomeIcon icon={faArrowLeft} /></button>
-                <button className="right_btn" onClick={goToNextWord} disabled={!currentWord}><FontAwesomeIcon icon={faArrowRight} /></button>
+            <div className="contents_lerebtn">
+                <button className='left_btn' onClick={goToPreviousWord} disabled={!currentWord}><FontAwesomeIcon icon={faArrowLeft} size="4x"/></button>
+                <button className="right_btn" onClick={goToNextWord} disabled={!currentWord}><FontAwesomeIcon icon={faArrowRight} size="4x"/></button>
             </div>
         </footer>
     );

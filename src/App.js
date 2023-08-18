@@ -5,6 +5,7 @@ import Login from "./component/login/login";
 import Warning from "./component/warning/warning"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Write from "./component/write/write";
+import Bookmark from "./component/bookmark/bookmark";
 
 
 function setScreenSize() {
@@ -60,6 +61,7 @@ function App() {
 				} 
 			/>
 			<Route path="/mz_plus" element={<Write setCurrentWord={setCurrentWord}/>} />
+			<Route path="/bookmark" element={<Bookmark />}></Route>
 			</Routes>
 		</BrowserRouter>
 	)

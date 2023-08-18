@@ -1,14 +1,36 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Moirai+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Moirai+One&family=Stylish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Gasoek+One&family=Moirai+One&family=Stylish&display=swap');
+/* google font */
+
+.layout {
+    background-color: #3f3f3f;
+}
+
 main {
     display: flex;
     justify-content: center;
+    font-family: 'Dongle', sans-serif;
+    color: rgb(156, 164, 247);
+    font-weight: 50;
+    
 }
 
 .main {
-    height: 45vh;
+    height: 46.7vh;
     width: 95%;
     margin-top: auto;
-    border: 2px solid black; 
-    padding: 10px; 
+    /* margin-bottom: -3%; */
+
+
+     
+
+    border-top: 2px solid rgb(138, 138, 138);
+    border-bottom: 2px solid rgb(138, 138, 138);
+
+    padding: 15px; 
 }
 
 .main-title {
@@ -43,6 +65,7 @@ main {
     justify-content: center;
     align-items: center;
     height: 70%; /* 메인 컨테이너 높이에 맞게 설정 */
+    margin-top: 7vh;
 }
 /* 뜻 폰트 사이즈 변환 */
 
